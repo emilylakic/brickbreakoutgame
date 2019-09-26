@@ -1,6 +1,9 @@
 package com.example.myapplication.brickbreakoutgame;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.graphics.Point;
+import android.os.Bundle;
+import android.view.Display;
 
 import android.os.Bundle;
 
