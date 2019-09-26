@@ -8,7 +8,7 @@ import android.view.Display;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
-
+    SnakeEngine snakeEngine;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
