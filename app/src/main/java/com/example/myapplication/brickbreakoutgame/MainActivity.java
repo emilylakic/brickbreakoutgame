@@ -18,4 +18,16 @@ public class MainActivity extends AppCompatActivity {
         snakeEngine = new SnakeEngine(this, size);
         setContentView(snakeEngine);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        snakeEngine.resume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        snakeEngine.pause();
+    }
 }
