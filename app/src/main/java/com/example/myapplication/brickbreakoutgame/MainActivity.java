@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Display;
 
 public class MainActivity extends AppCompatActivity {
-    //Instance of SnakeEngine
     SnakeEngine snakeEngine;
 
     @Override
