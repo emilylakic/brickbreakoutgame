@@ -154,7 +154,6 @@ public class SnakeEngine extends SurfaceView implements Runnable {
                 dead = true;
             }
         }
-
         return dead;
     }
 
