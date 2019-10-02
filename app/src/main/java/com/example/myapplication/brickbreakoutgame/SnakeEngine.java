@@ -217,15 +217,15 @@ public class SnakeEngine extends SurfaceView implements Runnable {
 
         switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_UP:
-                if ((motionEvent.getX() >= screenX / 2) && (motionEvent.getY() >= screenY / 2)) {
+                if (motionEvent.getX() >= screenX / 2) {
                     switch(heading){
-                        case DOWN:
+                        case UP:
                             heading = Heading.LEFT;
                             break;
                         case RIGHT:
                             heading = Heading.UP;
                             break;
-                        case UP:
+                        case DOWN:
                             heading = Heading.RIGHT;
                             break;
                         case LEFT:
@@ -234,13 +234,13 @@ public class SnakeEngine extends SurfaceView implements Runnable {
                     }
                 } else {
                     switch(heading){
-                        case DOWN:
+                        case UP:
                             heading = Heading.RIGHT;
                             break;
                         case LEFT:
                             heading = Heading.UP;
                             break;
-                        case UP:
+                        case DOWN:
                             heading = Heading.LEFT;
                             break;
                         case RIGHT:
