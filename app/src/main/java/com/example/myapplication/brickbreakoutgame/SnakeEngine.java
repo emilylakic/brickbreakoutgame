@@ -20,35 +20,41 @@ public class SnakeEngine extends SurfaceView implements Runnable {
     private Thread thread = null;
     private Context context;
     private SoundPool soundPool;
+
     private int eat_bob = -1;
     private int snake_crash = -1;
+
     public enum Heading {UP, RIGHT, DOWN, LEFT};
     private Heading heading = Heading.RIGHT;
-    private int screenX;
-    private int screenY;
+
+    private int screenX, screenY;
     private int snakeLength;
-    private int bobX;
-    private int bobY;
-    private int blockSize;
-    private final int NUM_BLOCKS_WIDE = 50;
-    private int numBlocksHigh;
+    private int bobX, bobY;
+    private int blockSize, numBlocksHigh;
+
+    private final int numBlocksWide = 50;
+
     private long nextFrameTime;
     private final long FPS = 10;
     private final long MILLIS_PER_SECOND = 1000;
+
     private int score;
-    private int[] snakeXs;
-    private int[] snakeYs;
+    private int[] snakeXs, snakeYs;
+
     private volatile boolean isPlaying;
     private Canvas canvas;
+
     private SurfaceHolder surfaceHolder;
     private Paint paint;
 
     public SnakeEngine(Context context, Point size) {
         super(context);
         context = context;
+
         screenX = size.x;
         screenY = size.y;
-        blockSize = screenX / NUM_BLOCKS_WIDE;
+
+        blockSize = screenX / numBlocksWide;
         numBlocksHigh = screenY / blockSize;
         soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
         try {
@@ -61,8 +67,7 @@ public class SnakeEngine extends SurfaceView implements Runnable {
             descriptor = assetManager.openFd("death_sound.ogg");
             snake_crash = soundPool.load(descriptor, 0);
 
-        } catch (IOException e) {
-
+       } catch (IOException e) {
         }
 
         surfaceHolder = getHolder();
@@ -79,7 +84,6 @@ public class SnakeEngine extends SurfaceView implements Runnable {
                 update();
                 draw();
             }
-
         }
     }
 
@@ -99,7 +103,7 @@ public class SnakeEngine extends SurfaceView implements Runnable {
 
     public void newGame() {
         snakeLength = 1;
-        snakeXs[0] = NUM_BLOCKS_WIDE / 2;
+        snakeXs[0] = numBlocksWide / 2;
         snakeYs[0] = numBlocksHigh / 2;
         spawnBob();
         score = 0;
@@ -108,7 +112,7 @@ public class SnakeEngine extends SurfaceView implements Runnable {
 
     public void spawnBob() {
         Random random = new Random();
-        bobX = random.nextInt(NUM_BLOCKS_WIDE - 1) + 1;
+        bobX = random.nextInt(numBlocksWide - 1) + 1;
         bobY = random.nextInt(numBlocksHigh - 1) + 1;
     }
 
@@ -146,7 +150,7 @@ public class SnakeEngine extends SurfaceView implements Runnable {
     private boolean detectDeath(){
         boolean dead = false;
         if (snakeXs[0] == -1) dead = true;
-        if (snakeXs[0] >= NUM_BLOCKS_WIDE) dead = true;
+        if (snakeXs[0] >= numBlocksWide) dead = true;
         if (snakeYs[0] == -1) dead = true;
         if (snakeYs[0] == numBlocksHigh) dead = true;
         for (int i = snakeLength - 1; i > 0; i--) {
@@ -213,15 +217,15 @@ public class SnakeEngine extends SurfaceView implements Runnable {
 
         switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_UP:
-                if (motionEvent.getX() >= screenX / 2) {
+                if ((motionEvent.getX() >= screenX / 2) && (motionEvent.getY() >= screenY / 2)) {
                     switch(heading){
-                        case UP:
+                        case DOWN:
                             heading = Heading.LEFT;
                             break;
                         case RIGHT:
                             heading = Heading.UP;
                             break;
-                        case DOWN:
+                        case UP:
                             heading = Heading.RIGHT;
                             break;
                         case LEFT:
@@ -230,13 +234,13 @@ public class SnakeEngine extends SurfaceView implements Runnable {
                     }
                 } else {
                     switch(heading){
-                        case UP:
+                        case DOWN:
                             heading = Heading.RIGHT;
                             break;
                         case LEFT:
                             heading = Heading.UP;
                             break;
-                        case DOWN:
+                        case UP:
                             heading = Heading.LEFT;
                             break;
                         case RIGHT:
