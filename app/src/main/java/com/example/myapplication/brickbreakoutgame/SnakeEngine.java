@@ -205,8 +205,8 @@ public class SnakeEngine extends SurfaceView implements Runnable {
     }
 
     public boolean updateRequired() {
-        if(nextFrameTime <= System.currentTimeMillis()){
-            nextFrameTime =System.currentTimeMillis() + MILLIS_PER_SECOND / FPS;
+        if(nextFrameTime <= System.currentTimeMillis()) {
+            nextFrameTime = System.currentTimeMillis() + MILLIS_PER_SECOND / FPS;
             return true;
         }
         return false;
@@ -220,31 +220,31 @@ public class SnakeEngine extends SurfaceView implements Runnable {
                 if (motionEvent.getX() >= screenX / 2) {
                     switch(heading){
                         case UP:
-                            heading = Heading.LEFT;
-                            break;
-                        case RIGHT:
-                            heading = Heading.UP;
-                            break;
-                        case DOWN:
                             heading = Heading.RIGHT;
                             break;
-                        case LEFT:
+                        case RIGHT:
                             heading = Heading.DOWN;
+                            break;
+                        case DOWN:
+                            heading = Heading.LEFT;
+                            break;
+                        case LEFT:
+                            heading = Heading.UP;
                             break;
                     }
                 } else {
                     switch(heading){
                         case UP:
-                            heading = Heading.RIGHT;
-                            break;
-                        case LEFT:
-                            heading = Heading.UP;
-                            break;
-                        case DOWN:
                             heading = Heading.LEFT;
                             break;
-                        case RIGHT:
+                        case LEFT:
                             heading = Heading.DOWN;
+                            break;
+                        case DOWN:
+                            heading = Heading.RIGHT;
+                            break;
+                        case RIGHT:
+                            heading = Heading.UP;
                             break;
                     }
                 }
