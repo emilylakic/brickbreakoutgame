@@ -8,10 +8,12 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class AnimatedView extends ImageView {
     private Context mContext;
-    int m = 20;
-    int e = 510;
+    int m = 100;
+    int e = 390;
     int x = -1;
     int y = -1;
     int score = 0;
@@ -32,6 +34,7 @@ public class AnimatedView extends ImageView {
         }
     };
     protected void onDraw(Canvas c) {
+
         BitmapDrawable ball = (BitmapDrawable) mContext.getResources().getDrawable(R.drawable.beachball);
         BitmapDrawable lifesaver = (BitmapDrawable) mContext.getResources().getDrawable(R.drawable.lifesaver);
 
@@ -47,14 +50,12 @@ public class AnimatedView extends ImageView {
                 if ((y > this.getHeight() - ball.getBitmap().getHeight()) || (y < 0)) {
                     yVelocity = yVelocity * -1;
                 }
-                if ((x == e || ((500 < x) && (x < 520))) && (y == m || ((10 < y) && (y < 30)))) {
-                    xVelocity = xVelocity * -0;
-                    yVelocity = yVelocity * -0;
-                    score++;
+                if((350>x) && (x<400) || (90<y) && (y<100)) {
+                    xVelocity = xVelocity *0;
                 }
             }
             c.drawBitmap(ball.getBitmap(), x, y, null);
             c.drawBitmap(lifesaver.getBitmap(), e, m, null);
             h.postDelayed(r, FRAME_RATE);
         }
-}
+    }
