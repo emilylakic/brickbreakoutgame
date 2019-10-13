@@ -28,8 +28,8 @@ public class AnimatedView extends ImageView {
         }
     };
     protected void onDraw(Canvas c) {
-        BitmapDrawable ball = (BitmapDrawable) mContext.getResources().getDrawable(R.drawable.basketball);
-        if (x<0 && y <0) {
+        BitmapDrawable ball = (BitmapDrawable) mContext.getResources().getDrawable(R.drawable.beachball);
+        if (x<0 && y<0) {
             x = this.getWidth()/2;
             y = this.getHeight()/2;
         } else {
