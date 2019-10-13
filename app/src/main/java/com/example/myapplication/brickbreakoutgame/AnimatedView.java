@@ -6,11 +6,15 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class AnimatedView extends ImageView {
     private Context mContext;
+    int m = 20;
+    int e = 510;
     int x = -1;
     int y = -1;
+    int score = 0;
     private int xVelocity = 10;
     private int yVelocity = 5;
     private Handler h;
@@ -29,20 +33,28 @@ public class AnimatedView extends ImageView {
     };
     protected void onDraw(Canvas c) {
         BitmapDrawable ball = (BitmapDrawable) mContext.getResources().getDrawable(R.drawable.beachball);
-        if (x<0 && y<0) {
-            x = this.getWidth()/2;
-            y = this.getHeight()/2;
-        } else {
-            x += xVelocity;
-            y += yVelocity;
-            if ((x > this.getWidth() - ball.getBitmap().getWidth()) || (x < 0)) {
-                xVelocity = xVelocity*-1;
+        BitmapDrawable lifesaver = (BitmapDrawable) mContext.getResources().getDrawable(R.drawable.lifesaver);
+
+            if (x < 0 && y < 0) {
+                x = this.getWidth() / 2;
+                y = this.getHeight() / 2;
+            } else {
+                x += xVelocity;
+                y += yVelocity;
+                if ((x > this.getWidth() - ball.getBitmap().getWidth()) || (x < 0)) {
+                    xVelocity = xVelocity * -1;
+                }
+                if ((y > this.getHeight() - ball.getBitmap().getHeight()) || (y < 0)) {
+                    yVelocity = yVelocity * -1;
+                }
+                if ((x == e || ((500 < x) && (x < 520))) && (y == m || ((10 < y) && (y < 30)))) {
+                    xVelocity = xVelocity * -0;
+                    yVelocity = yVelocity * -0;
+                    score++;
+                }
             }
-            if ((y > this.getHeight() - ball.getBitmap().getHeight()) || (y < 0)) {
-                yVelocity = yVelocity*-1;
-            }
+            c.drawBitmap(ball.getBitmap(), x, y, null);
+            c.drawBitmap(lifesaver.getBitmap(), e, m, null);
+            h.postDelayed(r, FRAME_RATE);
         }
-        c.drawBitmap(ball.getBitmap(), x, y, null);
-        h.postDelayed(r, FRAME_RATE);
-    }
 }

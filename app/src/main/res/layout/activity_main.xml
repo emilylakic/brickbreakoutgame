@@ -6,6 +6,14 @@
     android:orientation="vertical"
     android:background="@drawable/poolfloor">
 
+
+    <TextView
+        android:id="@+id/point"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:text="" />
+
     <com.example.myapplication.brickbreakoutgame.AnimatedView
         android:id="@+id/anim_view"
         android:layout_height="fill_parent"
