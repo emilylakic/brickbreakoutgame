@@ -1,12 +1,5 @@
 # CS441 BOUNCING BALL GAME ANDROID APP
 
 ## Functionality
-
-
-## Preview
-
-![Score0]()
-![Score1]()
-![TargetChanged]()
-
+This was my first attempt at a game in Android Studio. I implemented a separate Java class, AnimatedView.java, that served as a SurfaceView over MainActivity to show the actions of the game. The setting is beach themed. I got the idea from my love of the beach and wanting to build something off of that. There is a beach ball, imported as a drawable image in res, which moves across the screen and bounces off of the screen's boundaries. There is a lifesaver ring on the screen by which the beach ball travels through. The project was a great way to start learning about gaming as I have not coded something like this before with as much animation! I am eager to build something more complex with the next project, or delve into iOS development. 09/23: Began coding, changed orientation to landscape, and created an inital README. 09/24: Went through tutorials to learn about gaming. 09/25: Continued to learn about gaming, analyzed functions of a brick breaker game, started my own code from scratch. 09/26: Began a snake game instead, worked on importing statements. 09/27: Created a separate class for the snake to run, onCreate(), onPause(), onResume() methods, and extended SurfaceView. 09/28: Continued learning through tutorial on how gaming functions in Android Studio, got snake to function but movement is very off and did not get its food correctly. 10/02: Worked on movement of snake. Fixed for some directions and certain times. 10/11: Decided to switch project to something I was more interested in. Wanted to implement idea of a bouncing ball. Added ball to drawable folder and removed horizontal orientation. 10/13: Figured out theme of game (beach with beach ball!), added background to drawable folder as well as beach ball and lifesaver ring, and got ball to move across screen, hitting different areas of the screen and bouncing off to then travel through the lifesaver ring as it maneuvered the screen.
 
